@@ -7,8 +7,8 @@ export default class RatedView {
         this._createViews();
         this._populateViews();
         this._clearPreviousRenderedViews(domRoot)
-        this._renderViews(domRoot);
         this._activateStyleSheet();
+        this._renderViews(domRoot);
     }
 
     _activateStyleSheet() {

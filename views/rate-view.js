@@ -9,8 +9,8 @@ export default class RateView {
         this._populateViews();
         this._registerEvents();
         this._clearPreviousRenderedViews(domRoot)
-        this._renderViews(domRoot);
         this._activateStyleSheet();
+        this._renderViews(domRoot);
     }
 
     _activateStyleSheet() {
