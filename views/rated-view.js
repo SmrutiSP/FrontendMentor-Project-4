@@ -21,7 +21,7 @@ export default class RatedView {
     }
 
     _populateViews() {
-        this.imageWithinHeaderElement.src = "./assets/images/illustration-thank-you.svg";
+        this.imageWithinHeaderElement.src = "./images/illustration-thank-you.svg";
         this.imageWithinHeaderElement.alt = "thank you image";
 
         this.pTagWithinSectionElement.textContent = `You selected ${this._rating} out of ${this._maxRating}`;

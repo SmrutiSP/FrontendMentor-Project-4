@@ -23,7 +23,7 @@ export default class RateView {
     }
 
     _populateViews() {
-        this.imageWithinHeaderElement.src = "./assets/images/icon-star.svg";
+        this.imageWithinHeaderElement.src = "./images/icon-star.svg";
         this.imageWithinHeaderElement.alt = "star icon";
         this.hOneTagWithinHeaderElement.textContent = "How did we do ?";
 
