@@ -19,21 +19,22 @@ class RatingController {
     }
 
     _renderRateView(availableRating) {
-        let options = {
+        let optionsForRateView = {
             document: this._document,
             rating: availableRating,
             maxRating: 5,
             passRatingToController: (newAvailableRating) => {
                 if(!newAvailableRating) return;
                 this._storageService.storeLatestRating(newAvailableRating);
-                new RatedView({
+                let optionsForRatedView = {
                     document: this._document,
                     rating: newAvailableRating,
-                    maxRating: 5
-                });
+                    maxRating: optionsForRateView.maxRating
+                };
+                new RatedView(optionsForRatedView);
             }
         }
-        new RateView(options);
+        new RateView(optionsForRateView);
     }
 }
 
