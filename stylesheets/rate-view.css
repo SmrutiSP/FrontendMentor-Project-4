@@ -1,0 +1,93 @@
+.container .rate-view-header-element img {
+    padding: 1rem;
+    background-color: var(--Very-Dark-Blue);
+    border-radius: 50%;
+}
+
+.container .rate-view-header-element h1 {
+    color: var(--White);
+}
+
+.container .rate-view-section-element-one p {
+    color: var(--Medium-Grey);
+    text-align: justify;
+}
+
+.container .rate-view-section-element-two ul {
+    list-style-type: none;
+    padding-left: 0px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.container .rate-view-section-element-two ul li {
+    width: 2.5rem;
+    aspect-ratio: 1/1;
+    background-color: var(--Very-Dark-Blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--Medium-Grey);
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.container .rate-view-section-element-two ul li:hover {
+    background-color: var(--Orange);
+    color: var(--White);
+}
+
+.container .rate-view-footer-element {
+    text-align: center;
+}
+
+.container .rate-view-footer-element button {
+    padding: 0.5rem 6rem;
+    border-radius: 2rem;
+    background-color: var(--Orange);
+    color: var(--White);
+    border: none;
+}
+
+.container .rate-view-footer-element button:hover {
+    background-color: var(--White);
+    color: var(--Orange);
+    cursor: pointer;
+}
+
+#selected-rating {
+    background-color: var(--Medium-Grey);
+    color: white;
+}
+
+@media (max-width:460px) {
+    .container .rate-view-section-element-one p {
+        font-size: 0.8rem;
+    }
+
+    .container .rate-view-section-element-two ul li {
+        width: 2rem;
+        font-size: 0.8rem;
+    }
+
+    .container .rate-view-footer-element button {
+        padding: 0.5rem 5rem;
+    }
+}
+
+@media (max-width:340px) {
+    .container .rate-view-section-element-one p {
+        font-size: 0.7rem;
+    }
+
+    .container .rate-view-section-element-two ul li {
+        width: 1.5rem;
+        font-size: 0.7rem;
+    }
+
+    .container .rate-view-footer-element button {
+        padding: 0.5rem 4rem;
+    }
+}

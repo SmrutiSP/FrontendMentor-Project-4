@@ -6,17 +6,8 @@ export default class RatedView {
         let domRoot = this._doc.querySelector('.container');
         this._createViews();
         this._populateViews();
-        this._clearPreviousRenderedViews(domRoot)
-        this._activateStyleSheet();
+        this._clearPreviousRenderedViews(domRoot);
         this._renderViews(domRoot);
-    }
-
-    _activateStyleSheet() {
-        for(let child of this._doc.head.children) {
-            child.hasAttribute('rel') && 
-            child.getAttribute('rel') === 'stylesheet' &&  
-            child.setAttribute('href',"./stylesheets/rated-view-style.css");
-        }
     }
 
     _clearPreviousRenderedViews(domRoot) {
@@ -33,7 +24,7 @@ export default class RatedView {
         this.imageWithinHeaderElement.src = "./assets/images/illustration-thank-you.svg";
         this.imageWithinHeaderElement.alt = "thank you image";
 
-        this.pTagWithinMainElement.textContent = `You selected ${this._rating} out of ${this._maxRating}`;
+        this.pTagWithinSectionElement.textContent = `You selected ${this._rating} out of ${this._maxRating}`;
 
         this.pTagOneWithinFooterElement.textContent = 'Thank You!';
         this.pTagTwoWithinFooterElement.textContent = 'We appreciate you taking the time to give a rating. If you ever need more support, don\'t hesitate to get in touch!';
@@ -46,16 +37,20 @@ export default class RatedView {
         this.headerElement = this._doc.createElement('header');
         this.imageWithinHeaderElement = this._doc.createElement('img');
         this.headerElement.append(this.imageWithinHeaderElement);
+        this.headerElement.classList.add('rated-view-header-element');
         
-        this.mainElement = this._doc.createElement('main');
-        this.pTagWithinMainElement = this._doc.createElement('p');
-        this.mainElement.appendChild(this.pTagWithinMainElement);
+        this.sectionElement = this._doc.createElement('section');
+        this.pTagWithinSectionElement = this._doc.createElement('p');
+        this.sectionElement.appendChild(this.pTagWithinSectionElement);
+        this.sectionElement.classList.add('rated-view-section-element');
 
         this.footerElement = this._doc.createElement('footer');
         this.pTagOneWithinFooterElement = this._doc.createElement('p');
         this.pTagTwoWithinFooterElement = this._doc.createElement('p');
         this.footerElement.append(this.pTagOneWithinFooterElement,this.pTagTwoWithinFooterElement);
+        this.footerElement.classList.add('rated-view-footer-element');
 
-        this.docFragment.append(this.headerElement, this.mainElement, this.footerElement);
+
+        this.docFragment.append(this.headerElement, this.sectionElement, this.footerElement);
     }
 }

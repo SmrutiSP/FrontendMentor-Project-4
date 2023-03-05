@@ -8,17 +8,8 @@ export default class RateView {
         this._createViews();
         this._populateViews();
         this._registerEvents();
-        this._clearPreviousRenderedViews(domRoot)
-        this._activateStyleSheet();
+        this._clearPreviousRenderedViews(domRoot);
         this._renderViews(domRoot);
-    }
-
-    _activateStyleSheet() {
-        for(let child of this._doc.head.children) {
-            child.hasAttribute('rel') && 
-            child.getAttribute('rel') === 'stylesheet' &&  
-            child.setAttribute('href',"./stylesheets/rate-view-style.css");
-        }
     }
 
     _clearPreviousRenderedViews(domRoot) {
@@ -36,7 +27,7 @@ export default class RateView {
         this.imageWithinHeaderElement.alt = "star icon";
         this.hOneTagWithinHeaderElement.textContent = "How did we do ?";
 
-        this.pTagWithinSectionElement.textContent = "Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!";
+        this.pTagWithinSectionElementOne.textContent = "Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!";
 
         for(let index = 1 ; index <= this._maxRating ; index++) { 
             this['liTagWithinUlTag'+index].textContent = (""+index);
@@ -56,24 +47,29 @@ export default class RateView {
         this.imageWithinHeaderElement = this._doc.createElement('img');
         this.hOneTagWithinHeaderElement = this._doc.createElement('h1');
         this.headerElement.append(this.imageWithinHeaderElement,this.hOneTagWithinHeaderElement);
+        this.headerElement.classList.add('rate-view-header-element');
         
-        this.sectionElement = this._doc.createElement('section');
-        this.pTagWithinSectionElement = this._doc.createElement('p');
-        this.sectionElement.appendChild(this.pTagWithinSectionElement);
+        this.sectionElementOne = this._doc.createElement('section');
+        this.pTagWithinSectionElementOne = this._doc.createElement('p');
+        this.sectionElementOne.appendChild(this.pTagWithinSectionElementOne);
+        this.sectionElementOne.classList.add('rate-view-section-element-one');
 
-        this.mainElement = this._doc.createElement('main');
-        this.ulTagWithinMainElement = this._doc.createElement('ul');
+        this.sectionElementTwo = this._doc.createElement('section');
+        this.ulTagWithinSectionElementTwo = this._doc.createElement('ul');
         for(let index = 1 ; index <= this._maxRating ; index++) {
             this['liTagWithinUlTag'+index] = this._doc.createElement('li');
-            this.ulTagWithinMainElement.appendChild(this['liTagWithinUlTag'+index]);
+            this.ulTagWithinSectionElementTwo.appendChild(this['liTagWithinUlTag'+index]);
         }
-        this.mainElement.appendChild(this.ulTagWithinMainElement);
+        this.sectionElementTwo.appendChild(this.ulTagWithinSectionElementTwo);
+        this.sectionElementTwo.classList.add('rate-view-section-element-two');
+
 
         this.footerElement = this._doc.createElement('footer');
         this.buttonTagWithinFooterElement = this._doc.createElement('button');
         this.footerElement.appendChild(this.buttonTagWithinFooterElement);
+        this.footerElement.classList.add('rate-view-footer-element');
 
-        this.docFragment.append(this.headerElement, this.sectionElement, this.mainElement, this.footerElement);
+        this.docFragment.append(this.headerElement, this.sectionElementOne, this.sectionElementTwo, this.footerElement);
     }
 
     _updateRating(event) {
@@ -89,7 +85,7 @@ export default class RateView {
     }
 
     _registerEvents() {
-        this.ulTagWithinMainElement.addEventListener('click',this._updateRating.bind(this));
+        this.ulTagWithinSectionElementTwo.addEventListener('click',this._updateRating.bind(this));
         this.buttonTagWithinFooterElement.addEventListener('click',this._publishUpdate.bind(this));
     }
 
