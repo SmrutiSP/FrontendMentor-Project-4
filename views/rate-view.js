@@ -73,11 +73,13 @@ export default class RateView {
     }
 
     _updateRating(event) {
-        if(this._rating) {
-            this['liTagWithinUlTag'+this._rating].removeAttribute('id');
+        if(event.target.nodeName === 'LI') {
+            if(this._rating) {
+                this['liTagWithinUlTag'+this._rating].removeAttribute('id');
+            }
+            this._rating = event.target.textContent;
+            event.target.setAttribute('id','selected-rating');
         }
-        this._rating = event.target.textContent;
-        event.target.setAttribute('id','selected-rating');
     }
 
     _publishUpdate() {
